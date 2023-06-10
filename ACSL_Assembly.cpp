@@ -2,7 +2,7 @@
 #define ll long long
 using namespace std;
 
-//hola what the hell is this
+//holy cow
 
 int main() {
 	freopen("acslembly.in", "r", stdin);
