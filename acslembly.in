@@ -1,1 +1,16 @@
-
+N DC 5
+- LOAD N
+- STORE F
+- SUB =1
+TOP STORE B
+- LOAD F
+- MULT B
+- STORE F
+- LOAD B
+- SUB =1
+- BE OUT
+- LOAD B
+- SUB =1
+- BU TOP
+OUT PRINT F
+- END -
