@@ -81,84 +81,90 @@ int main() {
             else {
                 ACC = st[LOC];
             }
-        }
-        else if (!OPCODE.compare("STORE")){
+        } else if (!OPCODE.compare("STORE")){
             st[LOC] = ACC;
-        }
-        else if (!OPCODE.compare("ADD")){
+
+        } else if (!OPCODE.compare("ADD")){
             if (LOC[0] == '='){
                 ACC += stoi(LOC.substr(1));
-            }
-            else {
+            } else {
                 ACC += st[LOC];
             }
-        }
-        else if (!OPCODE.compare("SUB")){
+
+        } else if (!OPCODE.compare("SUB")){
             if (LOC[0] == '='){
                 ACC -= stoi(LOC.substr(1));
-            }
-            else {
+            } else {
                 ACC -= st[LOC];
             }
-        }
-        else if (!OPCODE.compare("MULT")){
+
+        } else if (!OPCODE.compare("MULT")){
             if (LOC[0] == '='){
                 ACC *= stoi(LOC.substr(1));
-            }
-            else {
+            } else {
                 ACC *= st[LOC];
             }
-        }
-        else if (!OPCODE.compare("DIV")){
+
+        } else if (!OPCODE.compare("DIV")){
             if (LOC[0] == '='){
                 ACC /= stoi(LOC.substr(1));
-            }
-            else {
+            } else {
                 ACC /= st[LOC];
             }
-        }
-        else if (!OPCODE.compare("BG")){
+
+        } else if (!OPCODE.compare("BG")){
             if (ACC>0){
                 pointer = br[LOC];
-            }
-            else {
+            } else {
                 pointer++;
             }
-        }
-        else if (!OPCODE.compare("BE")){
+        } else if (!OPCODE.compare("BE")){
             if (ACC==0){
                 pointer = br[LOC];
-            }
-            else {
+            } else {
                 pointer++;
             }
-        }
-        else if (!OPCODE.compare("BL")){
+
+        } else if (!OPCODE.compare("BL")){
             if (ACC<0){
                 pointer = br[LOC];
-            }
-            else {
+            } else {
                 pointer++;
             }
-        }
-        else if (!OPCODE.compare("BU")){
+
+        } else if (!OPCODE.compare("BU")){
             pointer = br[LOC];
-        }
-        else if (!OPCODE.compare("READ")){
+
+        } else if (!OPCODE.compare("READ")){
+            cout << "help";
             cin >> st[LOC];
+<<<<<<< HEAD
         }
         else if (!OPCODE.compare("PRINT")){
             fout << st[LOC];
         }
         else if (!OPCODE.compare("DC")){
+=======
+
+        } else if (!OPCODE.compare("PRINT")){ 
+            cout << st[LOC];
+
+        } else if (!OPCODE.compare("DC")){
+>>>>>>> f122cab494da1ee4b25d8d4be6ea395b334a82a1
             st[LABEL] = stoi(LOC);
-        }
-        else if (!OPCODE.compare("END")){
+
+        } else if (!OPCODE.compare("END")){
             break;
+<<<<<<< HEAD
         }
         else{
             cout<<OPCODE<<endl;
             fout << "ERROR";
+=======
+
+        } else{
+            cout << "ERROR";
+>>>>>>> f122cab494da1ee4b25d8d4be6ea395b334a82a1
             break;
         }
         if (OPCODE[0]!='B'){
