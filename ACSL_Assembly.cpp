@@ -2,37 +2,16 @@
 #define ll long long
 using namespace std;
 
-//holy cow
-//hello world
-
 int main() {
-    ifstream fin("acslembly.in");
-    ofstream fout("acslembly.out");
-    // freopen("acslembly.in", "r", stdin);
-	// freopen("acslembly.out", "w", stdout);
-    map<string,int> st;
-    map<string,int> br;
-    int ACC = 0;
-    vector<string> code[3];
-    int index = 0;
-
-    // while(true){
-    //     string LABEL,OPCODE,LOC;
-    //     fin >> LABEL >> OPCODE >> LOC;
-    //     code[0].push_back(LABEL);
-    //     code[1].push_back(OPCODE);
-    //     code[2].push_back(LOC);
-    //     if (code[0][index][0]!='-'){
-    //         br[code[0][index]] = index;
-    //     }
-    //     if (!code[1][index].compare("END")){
-    //         break;
-    //     }
-    //     index++;
-    // }
-
-
-    string line;
+    ifstream fin("acslembly.in"); // code file
+    ofstream fout("acslembly.out"); // output file(for PRINT OPCODE)
+    map<string,int> st; // storage for variables
+    map<string,int> br; // storage for branch indicators
+    int ACC = 0; // accumulator
+    
+    vector<string> code[3]; // stores the code in an array of vectors
+    int index = 0; // to record current index of the code
+    string line; // 
     while(getline(fin,line)){
         stringstream ss(line);
         string word;
@@ -40,7 +19,7 @@ int main() {
         while(getline(ss,word,' ')){
             words.push_back(word);
         }
-        if(words.size() == 1){
+        if(words.size() == 1){ 
             code[0].push_back("-");
             code[1].push_back(words[0]);
             code[2].push_back("-");
@@ -65,8 +44,6 @@ int main() {
         }
         index++;
     }
-
-    
     
     int pointer = 0;
     while(true){
