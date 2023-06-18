@@ -10,20 +10,25 @@ int main() {
     int ACC = 0; // accumulator
     
     vector<string> code[3]; // stores the code in an array of vectors
-    int index = 0; // to record current index of the code
-    string line; // 
+    int index = 0; // to record the current index of the code
+    string line; // Stores the lind read
     while(getline(fin,line)){
-        stringstream ss(line);
+	// Basically a split function
+        stringstream ss(line); 
         string word;
-        vector<string> words;
+        vector<string> words; // stores the words splited
         while(getline(ss,word,' ')){
             words.push_back(word);
         }
+
+	// Check different possible length for words
         if(words.size() == 1){ 
+	    // Only push the OPCODE in
             code[0].push_back("-");
             code[1].push_back(words[0]);
             code[2].push_back("-");
         }else if(words.size() == 2){
+	    // Consider two cases
             if(!words[1].compare("END")){
                 code[0].push_back(words[0]);
                 code[1].push_back(words[1]);
@@ -35,6 +40,7 @@ int main() {
                 code[2].push_back(words[1]);
             }
         }else{
+	    // Have all the three inputs
             code[0].push_back(words[0]);
             code[1].push_back(words[1]);
             code[2].push_back(words[2]);
