@@ -138,33 +138,19 @@ int main() {
         } else if (!OPCODE.compare("READ")){
             cout << "help";
             cin >> st[LOC];
-<<<<<<< HEAD
         }
         else if (!OPCODE.compare("PRINT")){
             fout << st[LOC];
         }
         else if (!OPCODE.compare("DC")){
-=======
-
-        } else if (!OPCODE.compare("PRINT")){ 
-            cout << st[LOC];
-
-        } else if (!OPCODE.compare("DC")){
->>>>>>> f122cab494da1ee4b25d8d4be6ea395b334a82a1
             st[LABEL] = stoi(LOC);
 
         } else if (!OPCODE.compare("END")){
             break;
-<<<<<<< HEAD
         }
         else{
             cout<<OPCODE<<endl;
             fout << "ERROR";
-=======
-
-        } else{
-            cout << "ERROR";
->>>>>>> f122cab494da1ee4b25d8d4be6ea395b334a82a1
             break;
         }
         if (OPCODE[0]!='B'){
