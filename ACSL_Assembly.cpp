@@ -6,27 +6,67 @@ using namespace std;
 //hello world
 
 int main() {
-	freopen("acslembly.in", "r", stdin);
-	freopen("acslembly.out", "w", stdout);
+    ifstream fin("acslembly.in");
+    ofstream fout("acslembly.out");
+    // freopen("acslembly.in", "r", stdin);
+	// freopen("acslembly.out", "w", stdout);
     map<string,int> st;
     map<string,int> br;
     int ACC = 0;
     vector<string> code[3];
     int index = 0;
-    while(true){
-        string LABEL,OPCODE,LOC;
-        cin >> LABEL >> OPCODE >> LOC;
-        code[0].push_back(LABEL);
-        code[1].push_back(OPCODE);
-        code[2].push_back(LOC);
-        if (code[0][index][0]!='-'){
-            br[code[0][index]] = index;
+
+    // while(true){
+    //     string LABEL,OPCODE,LOC;
+    //     fin >> LABEL >> OPCODE >> LOC;
+    //     code[0].push_back(LABEL);
+    //     code[1].push_back(OPCODE);
+    //     code[2].push_back(LOC);
+    //     if (code[0][index][0]!='-'){
+    //         br[code[0][index]] = index;
+    //     }
+    //     if (!code[1][index].compare("END")){
+    //         break;
+    //     }
+    //     index++;
+    // }
+
+
+    string line;
+    while(getline(fin,line)){
+        stringstream ss(line);
+        string word;
+        vector<string> words;
+        while(getline(ss,word,' ')){
+            words.push_back(word);
         }
-        if (!code[1][index].compare("END")){
-            break;
+        if(words.size() == 1){
+            code[0].push_back("-");
+            code[1].push_back(words[0]);
+            code[2].push_back("-");
+        }else if(words.size() == 2){
+            if(!words[1].compare("END")){
+                code[0].push_back(words[0]);
+                code[1].push_back(words[1]);
+                code[2].push_back("-");
+                br[words[0]] = index;
+            }else{
+                code[0].push_back("-");
+                code[1].push_back(words[0]);
+                code[2].push_back(words[1]);
+            }
+        }else{
+            code[0].push_back(words[0]);
+            code[1].push_back(words[1]);
+            code[2].push_back(words[2]);
+            if(words[1].compare("DC")){
+                br[words[0]] = index;
+            }
         }
         index++;
     }
+
+    
     
     int pointer = 0;
     while(true){
@@ -108,7 +148,7 @@ int main() {
             cin >> st[LOC];
         }
         else if (!OPCODE.compare("PRINT")){
-            cout << st[LOC];
+            fout << st[LOC];
         }
         else if (!OPCODE.compare("DC")){
             st[LABEL] = stoi(LOC);
@@ -117,7 +157,8 @@ int main() {
             break;
         }
         else{
-            cout << "ERROR";
+            cout<<OPCODE<<endl;
+            fout << "ERROR";
             break;
         }
         if (OPCODE[0]!='B'){

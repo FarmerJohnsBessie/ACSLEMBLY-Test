@@ -1,0 +1,64 @@
+N DC 5
+- LOAD N
+- STORE F
+- SUB =1
+TOP STORE B
+- LOAD F
+- MULT B
+- STORE F
+- LOAD B
+- SUB =1
+- BE OUT
+- LOAD B
+- SUB =1
+- BU TOP
+OUT PRINT F
+- END -
+
+============================================================================
+TEMP DC 0
+A DC 8
+B DC -2
+C DC 3
+LOAD B
+MULT C
+ADD A
+DIV B
+SUB A
+STORE TEMP
+END
+
+Outputs:-9
+
+============================================================================
+N DC 5
+LOAD N
+STORE F
+SUB =1
+TOP STORE B
+LOAD F
+MULT B
+STORE F
+LOAD B
+SUB =1
+BE OUT
+LOAD B
+SUB =1
+BU TOP
+OUT PRINT F
+END
+
+Output: 120
+
+============================================================================
+READ X
+LOAD X
+TOP SUB	=1
+BE DONE
+STORE A
+MULT X
+STORE X
+LOAD A
+BU TOP
+DONE PRINT X
+END	
