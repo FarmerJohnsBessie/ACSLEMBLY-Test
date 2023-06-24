@@ -1,21 +1,3 @@
-N DC 5
-- LOAD N
-- STORE F
-- SUB =1
-TOP STORE B
-- LOAD F
-- MULT B
-- STORE F
-- LOAD B
-- SUB =1
-- BE OUT
-- LOAD B
-- SUB =1
-- BU TOP
-OUT PRINT F
-- END -
-
-============================================================================
 TEMP DC 0
 A DC 8
 B DC -2
@@ -28,9 +10,30 @@ SUB A
 STORE TEMP
 END
 
-Outputs:-9
+Output: -9
 
 ============================================================================
+
+X DC 1
+Z DC 0
+TOP LOAD X
+MULT X
+ADD Z
+STORE Z
+SUB =500
+BL P
+LOAD X
+PRINT X
+END
+P LOAD X
+ADD =1
+STORE X
+BU TOP
+
+Output: 11
+
+============================================================================
+
 N DC 5
 LOAD N
 STORE F
@@ -51,6 +54,108 @@ END
 Output: 120
 
 ============================================================================
+
+X DC 21
+Y DC 49
+LOAD Y
+TOP BE STOP
+LOAD X
+DIV Y
+MULT Y
+STORE R
+LOAD X
+SUB R
+STORE R
+LOAD Y
+STORE X
+LOAD R
+STORE Y
+BU TOP
+STOP PRINT X
+END
+
+Output: 7
+
+============================================================================
+
+X DC 8
+Y DC 15
+TOP LOAD X
+MULT X
+SUB Y
+BL L
+LOAD X
+SUB =1
+STORE X
+LOAD Y
+SUB =1
+STORE Y
+BU TOP
+L PRINT X
+END
+
+Output: 3
+
+============================================================================
+
+A DC 12
+B DC 1
+TOP LOAD A
+DIV B
+STORE C
+LOAD B
+MULT C
+STORE D
+LOAD A
+SUB D
+BE OUT
+IN LOAD A
+SUB B
+BE STOP
+LOAD B
+ADD =1
+STORE B
+BU TOP
+OUT PRINT B
+BU IN
+STOP END
+
+Output: 1234612
+
+============================================================================
+
+N DC 60
+LOAD N 
+TOP SUB =2 
+BL DONE    
+LOAD =1    
+LOOP ADD =1
+STORE F    
+LOAD N     
+DIV F 
+STORE P 
+MULT F
+SUB N
+BE STOP
+LOAD F
+BU LOOP
+STOP LOAD S
+ADD F
+STORE S
+LOAD P
+STORE N
+BU TOP
+DONE PRINT S
+END
+S DC 0
+F DC 0
+P DC 0
+
+Output: 12
+
+============================================================================
+
+
 READ X
 LOAD X
 TOP SUB =1
