@@ -22,7 +22,9 @@ static inline std::string &trim(std::string &s) {
 }
 
 int main() {
-    ifstream fin("acslembly.in"); // code file
+    string filename;
+    cin>>filename;
+    ifstream fin(filename+".in"); // code file
     ofstream fout("acslembly.out"); // output file(for PRINT OPCODE)
     map<string,int> st; // storage for variables
     map<string,int> br; // storage for branch indicators
